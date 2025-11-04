@@ -29,7 +29,7 @@ https://blogapp-forlecture.vercel.app/
 ※箇条書きは「-」のあとに空白を入れて本文を始めることで可能です。
 
 ## 設計ドキュメント
-[要件定義・基本設計・詳細設計の一覧_Googleスプレッドシート](https://docs.google.com/spreadsheets/d/1yBssPgoUI_8TMwVZA2hWOLQj3-l7oirLB2FQ1YJgCww/edit?usp=sharing)
+[要件定義・基本設計・詳細設計の一覧_Googleスプレッドシート]([https://docs.google.com/spreadsheets/d/1yBssPgoUI_8TMwVZA2hWOLQj3-l7oirLB2FQ1YJgCww/edit?usp=sharing](https://docs.google.com/spreadsheets/d/1lAt60RcbFcefG2Vv6cXEfLrz2AEGKd1Nk4eXur7rBag/edit?usp=sharing))
 
 詳細設計時のワイヤーフレーム、ER図、ワークフロー図の画像はdocsディレクトリに格納しています。（[こちらからアクセス](./docs)）
 
