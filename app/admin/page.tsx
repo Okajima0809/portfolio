@@ -24,14 +24,14 @@ export default function AdminDashboard() {
         <DashboardCard
           title="選手登録"
           description="新しい選手を登録します"
-          href="/admin/users/new"
+          href="/admin/users"
         />
 
         {/* 試合結果 */}
         <DashboardCard
           title="試合結果登録"
           description="試合結果を入力し記録します"
-          href="/admin/games/new"
+          href="/admin/games"
         />
 
         {/* 打撃成績 */}

@@ -51,7 +51,6 @@ export default function UserListPage() {
       <table className="w-full bg-white shadow rounded">
         <thead>
           <tr className="bg-gray-200 border-b">
-            <th className="p-3">ID</th>
             <th className="p-3">名前</th>
             <th className="p-3">ポジション</th>
             <th className="p-3">編集</th>
@@ -61,7 +60,6 @@ export default function UserListPage() {
         <tbody>
           {users.map((user) => (
             <tr className="border-b" key={user.id}>
-              <td className="p-3">{user.id}</td>
               <td className="p-3">{user.username}</td>
               <td className="p-3">{user.role}</td>
 
