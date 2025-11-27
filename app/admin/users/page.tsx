@@ -37,20 +37,20 @@ export default function UserListPage() {
 
   return (
     <main className="p-8 bg-gray-100 min-h-screen">
-      <h1 className="text-3xl font-bold mb-6">選手一覧</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-900">選手一覧</h1>
 
       <div className="mb-4">
         <Link
           className="bg-blue-600 text-white px-4 py-2 rounded"
           href="/admin/users/new"
         >
-          ＋ 新規登録
+          + 新規登録
         </Link>
       </div>
 
       <table className="w-full bg-white shadow rounded">
         <thead>
-          <tr className="bg-gray-200 border-b">
+          <tr className="bg-gray-500 border-b">
             <th className="p-3">名前</th>
             <th className="p-3">ポジション</th>
             <th className="p-3">編集</th>
@@ -60,12 +60,12 @@ export default function UserListPage() {
         <tbody>
           {users.map((user) => (
             <tr className="border-b" key={user.id}>
-              <td className="p-3">{user.username}</td>
-              <td className="p-3">{user.role}</td>
+              <td className="p-3 text-gray-900 text-center">{user.username}</td>
+              <td className="p-3 text-gray-900 text-center">{user.role}</td>
 
               <td className="p-3">
                 <Link
-                  className="text-blue-600 underline"
+                  className="text-blue-600 underline text-center"
                   href={`/admin/users/${user.id}/edit`}
                 >
                   編集
@@ -75,7 +75,7 @@ export default function UserListPage() {
               <td className="p-3">
                 <button
                   onClick={() => handleDelete(user.id)}
-                  className="text-red-500 hover:underline"
+                  className="text-red-500 hover:underline text-center"
                 >
                   削除
                 </button>

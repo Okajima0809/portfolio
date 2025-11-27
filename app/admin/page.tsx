@@ -14,11 +14,11 @@ export default function AdminDashboard() {
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center">
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 text-center">
         管理者ダッシュボード
       </h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto text-gray-900">
 
         {/* 選手登録 */}
         <DashboardCard

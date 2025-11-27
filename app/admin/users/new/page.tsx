@@ -31,7 +31,7 @@ export default function NewPlayerPage() {
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-2xl font-bold mb-6">選手登録</h1>
+      <h1 className="text-2xl font-bold mb-6 text-gray-900">選手登録</h1>
 
       <form
         onSubmit={handleSubmit}
@@ -39,7 +39,7 @@ export default function NewPlayerPage() {
       >
         {/* 選手名 */}
         <div>
-          <label className="block font-bold mb-1">選手名</label>
+          <label className="block font-bold mb-1 text-gray-900">選手名</label>
           <input
             type="text"
             value={username}
@@ -51,7 +51,7 @@ export default function NewPlayerPage() {
 
         {/* ポジション */}
         <div>
-          <label className="block font-bold mb-1">ポジション</label>
+          <label className="block font-bold mb-1 text-gray-900">ポジション</label>
           <input
             type="text"
             value={role}
@@ -63,12 +63,12 @@ export default function NewPlayerPage() {
 
         {/* 画像URL */}
         <div>
-          <label className="block font-bold mb-1">画像URL（任意）</label>
+          <label className="block font-bold mb-1 text-gray-900">画像URL（任意）</label>
           <input
             type="text"
             value={avatarUrl}
             onChange={(e) => setAvatarUrl(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="border p-2 rounded w-full "
             placeholder="https://〜"
           />
         </div>

@@ -57,17 +57,17 @@ export default function EditUserPage() {
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-2xl font-bold mb-6">選手情報を編集</h1>
+      <h1 className="text-2xl font-bold mb-6 text-gray-900">選手情報を編集</h1>
 
       <form
         onSubmit={handleUpdate}
-        className="bg-white p-6 rounded-lg shadow max-w-md space-y-4"
+        className="bg-white p-6 rounded-lg shadow max-w-md space-y-4 "
       >
         <div>
-          <label className="block font-bold mb-1">選手名</label>
+          <label className="block font-bold mb-1 text-gray-900">選手名</label>
           <input
             type="text"
-            className="border p-2 w-full"
+            className="border p-2 w-full text-gray-900"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -75,20 +75,20 @@ export default function EditUserPage() {
         </div>
 
         <div>
-          <label className="block font-bold mb-1">ポジション</label>
+          <label className="block font-bold mb-1 text-gray-900">ポジション</label>
           <input
             type="text"
-            className="border p-2 w-full"
+            className="border p-2 w-full text-gray-900"
             value={role}
             onChange={(e) => setRole(e.target.value)}
           />
         </div>
 
         <div>
-          <label className="block font-bold mb-1">画像URL</label>
+          <label className="block font-bold mb-1 text-gray-900">画像URL</label>
           <input
             type="text"
-            className="border p-2 w-full"
+            className="border p-2 w-full text-gray-900"
             value={avatarUrl}
             onChange={(e) => setAvatarUrl(e.target.value)}
           />
