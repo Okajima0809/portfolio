@@ -4,20 +4,33 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { supabase } from "../../lib/supabaseClient";
 
+type User = {
+  id: string;
+  username: string;
+  number: number;
+  category: "監督" | "主将" | "選手";
+  avatar_url: string | null;
+};
+
 export default function UserListPage() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   const fetchUsers = async () => {
-    const { data, error } = await supabase.from("users").select("*");
+    const { data, error } = await supabase
+      .from("users")
+      .select("*")
+      .order("category", { ascending: true })
+      .order("number", { ascending: true });
 
     if (error) {
       alert("ユーザー取得エラー: " + error.message);
       return;
     }
-    setUsers(data);
+
+    setUsers(data as User[]);
   };
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     if (!confirm("本当に削除しますか？")) return;
 
     const { error } = await supabase.from("users").delete().eq("id", id);
@@ -41,8 +54,8 @@ export default function UserListPage() {
 
       <div className="mb-4">
         <Link
-          className="bg-blue-600 text-white px-4 py-2 rounded"
           href="/admin/users/new"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
         >
           + 新規登録
         </Link>
@@ -50,23 +63,25 @@ export default function UserListPage() {
 
       <table className="w-full bg-white shadow rounded">
         <thead>
-          <tr className="bg-gray-500 border-b">
+          <tr className="bg-gray-600 text-white border-b text-center">
+            <th className="p-3">背番号</th>
             <th className="p-3">名前</th>
-            <th className="p-3">ポジション</th>
+            <th className="p-3">カテゴリ</th>
             <th className="p-3">編集</th>
             <th className="p-3">削除</th>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr className="border-b" key={user.id}>
-              <td className="p-3 text-gray-900 text-center">{user.username}</td>
-              <td className="p-3 text-gray-900 text-center">{user.role}</td>
+            <tr className="border-b text-center" key={user.id}>
+              <td className="p-3 text-gray-900">{user.number}</td>
+              <td className="p-3 text-gray-900">{user.username}</td>
+              <td className="p-3 text-gray-900">{user.category}</td>
 
               <td className="p-3">
                 <Link
-                  className="text-blue-600 underline text-center"
                   href={`/admin/users/${user.id}/edit`}
+                  className="text-blue-500 underline"
                 >
                   編集
                 </Link>
@@ -75,7 +90,7 @@ export default function UserListPage() {
               <td className="p-3">
                 <button
                   onClick={() => handleDelete(user.id)}
-                  className="text-red-500 hover:underline text-center"
+                  className="text-red-500 hover:underline"
                 >
                   削除
                 </button>

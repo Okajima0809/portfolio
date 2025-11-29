@@ -35,7 +35,7 @@ export default function RootLayout({
             <NavItem href="/" title="トップページ" eng="TOPPAGE" />
             <NavItem href="/players" title="選手紹介" eng="PLAYER" />
             <NavItem href="/games" title="試合結果" eng="GAMEDATE" />
-            <NavItem href="/results" title="チーム成績" eng="RESULTS" />
+            <NavItem href="/results" title="個人成績" eng="RESULTS" />
             <NavItem href="/login" title="管理者ページ" eng="ADMIN" />
           </nav>
         </header>

@@ -6,18 +6,49 @@ import { useRouter } from "next/navigation";
 
 export default function NewPlayerPage() {
   const [username, setUsername] = useState("");
-  const [role, setRole] = useState("");
-  const [avatarUrl, setAvatarUrl] = useState("");
+  const [number, setNumber] = useState<number | "">("");
+  const [category, setCategory] = useState("選手");
+  const [file, setFile] = useState<File | null>(null);
 
   const router = useRouter();
 
+  // ------------------------
+  // 画像を Storage にアップロード
+  // ------------------------
+  const uploadImage = async () => {
+    if (!file) return null;
+
+    const fileName = `${Date.now()}-${file.name}`; // 重複防止
+    const { data, error } = await supabase.storage
+      .from("players")
+      .upload(fileName, file);
+
+    if (error) {
+      alert("画像アップロード失敗：" + error.message);
+      return null;
+    }
+
+    // 公開URLを取得
+    const url = supabase.storage.from("players").getPublicUrl(fileName);
+    return url.data.publicUrl;
+  };
+
+  // ------------------------
+  // 登録ボタン押した時
+  // ------------------------
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    let avatar_url = null;
+    if (file) {
+      avatar_url = await uploadImage();
+    }
+
     const { error } = await supabase.from("users").insert({
       username,
-      role,
-      avatar_url: avatarUrl,
+      number,
+      category,
+      avatar_url,
     });
 
     if (error) {
@@ -26,7 +57,7 @@ export default function NewPlayerPage() {
     }
 
     alert("選手を登録しました！");
-    router.push("/admin");
+    router.push("/admin/users");
   };
 
   return (
@@ -44,32 +75,45 @@ export default function NewPlayerPage() {
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="border p-2 rounded w-full text-gray-900"
             required
           />
         </div>
 
-        {/* ポジション */}
+        {/* 背番号 */}
         <div>
-          <label className="block font-bold mb-1 text-gray-900">ポジション</label>
+          <label className="block font-bold mb-1 text-gray-900">背番号</label>
           <input
-            type="text"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            className="border p-2 rounded w-full"
-            placeholder="例：投手、捕手、一塁手"
+            type="number"
+            value={number}
+            onChange={(e) => setNumber(Number(e.target.value))}
+            className="border p-2 rounded w-full text-gray-900"
+            required
           />
         </div>
 
-        {/* 画像URL */}
+        {/* カテゴリ */}
         <div>
-          <label className="block font-bold mb-1 text-gray-900">画像URL（任意）</label>
+          <label className="block font-bold mb-1 text-gray-900">カテゴリ</label>
+          <select
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            className="border p-2 rounded w-full"
+          >
+            <option value="監督">監督</option>
+            <option value="主将">主将</option>
+            <option value="選手">選手</option>
+          </select>
+        </div>
+
+        {/* 画像アップロード */}
+        <div>
+          <label className="block font-bold mb-1 text-gray-900">選手写真</label>
           <input
-            type="text"
-            value={avatarUrl}
-            onChange={(e) => setAvatarUrl(e.target.value)}
-            className="border p-2 rounded w-full "
-            placeholder="https://〜"
+            type="file"
+            accept="image/*"
+            onChange={(e) => setFile(e.target.files?.[0] || null)}
+            className="border p-2 rounded w-full bg-white text-gray-900"
           />
         </div>
 
