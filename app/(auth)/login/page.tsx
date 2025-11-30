@@ -24,8 +24,8 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white p-20 rounded-lg shadow-md w-140">
+    <main className="flex flex-col items-center h-screen bg-gray-100">
+      <div className="bg-white p-20 rounded-lg shadow-md w-140 mt-20">
         <h1 className="text-xl font-bold mb-4 text-gray-900">ログインフォーム</h1>
         <form onSubmit={handleLogin} className="space-y-4">
           <input

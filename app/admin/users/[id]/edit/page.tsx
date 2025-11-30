@@ -93,14 +93,14 @@ export default function EditUserPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold text-gray-900 mb-6">
+    <main className="min-h-screen bg-gray-100 p-8 text-gray-900">
+      <h1 className="text-3xl font-bold text-gray-900 mb-6 text-center">
         選手情報 編集
       </h1>
 
       <form
         onSubmit={handleUpdate}
-        className="bg-white max-w-md p-6 rounded shadow space-y-4"
+        className="bg-white max-w-md p-6 rounded shadow space-y-4 mx-auto"
       >
         {/* 名前 */}
         <div>

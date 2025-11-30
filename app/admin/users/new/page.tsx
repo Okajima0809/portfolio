@@ -57,16 +57,16 @@ export default function NewPlayerPage() {
     }
 
     alert("選手を登録しました！");
-    router.push("/admin/users");
+    router.push("/admin");
   };
 
   return (
     <main className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-2xl font-bold mb-6 text-gray-900">選手登録</h1>
+      <h1 className="text-2xl font-bold mb-6 text-gray-900 text-center">選手登録</h1>
 
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow max-w-md space-y-4"
+        className="bg-white p-6 rounded-lg shadow max-w-md space-y-4 mx-auto"
       >
         {/* 選手名 */}
         <div>
@@ -98,7 +98,7 @@ export default function NewPlayerPage() {
           <select
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="border p-2 rounded w-full"
+            className="border p-2 rounded w-full text-gray-900"
           >
             <option value="監督">監督</option>
             <option value="主将">主将</option>

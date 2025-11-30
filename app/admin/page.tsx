@@ -38,14 +38,14 @@ export default function AdminDashboard() {
         <DashboardCard
           title="打撃成績登録"
           description="打撃データを入力します"
-          href="/admin/batter/new"
+          href="/admin/batter"
         />
 
         {/* 投手成績 */}
         <DashboardCard
           title="投手成績登録"
           description="投手成績を入力します"
-          href="/admin/pitcher/new"
+          href="/admin/pitcher"
         />
       </div>
 
